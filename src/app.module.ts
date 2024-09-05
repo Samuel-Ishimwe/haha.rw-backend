@@ -16,9 +16,11 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { OrderItem } from './orderitem/entities/order.item.entity';
 import { OrderItemModule } from './orderitem/order.item.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({envFilePath : '.env', isGlobal : true}),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'), // Directory to serve static files from
       serveRoot: '/uploads', // URL prefix for serving static files

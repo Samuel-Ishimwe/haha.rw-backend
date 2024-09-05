@@ -15,10 +15,10 @@ export class ItemsService {
 
   async findAll(): Promise<Item[]> {
     const items: Item[] = await this.itemsRepository.find();
-  
+    const url = process.env.SERVER_URL;
     return items.map(item => ({
       ...item,
-      filename: `http://localhost:3000/${item.filename}`, // Prepend the server name
+      filename: `${url}/${item.filename}`, // Prepend the server name
     }));
   }
 
