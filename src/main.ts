@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express'; 
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
+import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
   
@@ -14,6 +15,8 @@ async function bootstrap() {
   if (!existsSync(uploadPath)) {
     mkdirSync(uploadPath, { recursive: true });
   }
+  app.use(bodyParser.json({ limit: '6200mb' }));
+  app.use(bodyParser.urlencoded({ limit: '6200mb', extended: true }));
   app.useStaticAssets(uploadPath);
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
