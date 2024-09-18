@@ -18,4 +18,9 @@ export class CreateUserDto {
     @IsEnum(Roles)
     readonly role: Roles;
     isActived : boolean;
+
+    constructor(name,login){
+        this.isActived = true;
+        this.name = name;
+    }
 }
