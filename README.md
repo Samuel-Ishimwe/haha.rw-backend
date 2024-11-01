@@ -1,2 +1,2 @@
-# kwisoko_store_backend
-kwisoko backend
+# haha.rw backend service
+haha.rw backend
